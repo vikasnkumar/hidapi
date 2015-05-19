@@ -1021,7 +1021,7 @@ int HID_API_EXPORT hid_write(hid_device *dev, const unsigned char *data, size_t 
 			(2/*HID output*/ << 8) | report_number,
 			dev->interface,
 			(unsigned char *)data, length,
-			1000/*timeout millis*/);
+			10000/*timeout millis*/);
 
 		if (res < 0)
 			return -1;
@@ -1038,7 +1038,7 @@ int HID_API_EXPORT hid_write(hid_device *dev, const unsigned char *data, size_t 
 			dev->output_endpoint,
 			(unsigned char*)data,
 			length,
-			&actual_length, 1000);
+			&actual_length, 10000);
 
 		if (res < 0)
 			return -1;
